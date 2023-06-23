@@ -47,6 +47,10 @@ curl -X GET http://localhost:8085/connectors/connector-name/status
 curl -X POST http://localhost:8085/connectors/connector-name/pause
 curl -X POST http://localhost:8085/connectors/connector-name/restart
 ```
+## Delete a connector
+```
+curl -X DELETE http://localhost:8085/connectors/connector-name
+```
 
 ## Check the Kafka Connect Logs to troubleshoot the connector related issues
 ```
