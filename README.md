@@ -27,17 +27,15 @@ kafka-topics --bootstrap-server localhost:9092 --delete --topic topic_name
 ## JDBC Connector
 
 ## Create a new JDBC Connector for timescaledb
-- Run the following commands
+- Run the following command from the kafka directory
 ```
- cd jdbc-scripts
-./jdbc-timescaledb.sh
+ ./jdbc-scripts/jdbc-timescaledb.sh
 ```
 
 ## Update the connector configs
-- Run the following commands
+- Run the following command from the kafka directory
 ```
- cd jdbc-scripts
-./jdbc-update-connector.sh
+ ./jdbc-scripts/jdbc-update-connector.sh
 ```
 
 ## Check the status of connector
