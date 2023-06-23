@@ -44,7 +44,7 @@ kafka-topics --bootstrap-server localhost:9092 --delete --topic topic_name
 ```
 curl -X GET http://localhost:8085/connectors/connector-name/status
 ```
-## Stop or start the connector
+## Stop or restart the connector
 ```
 curl -X POST http://localhost:8085/connectors/connector-name/pause
 curl -X POST http://localhost:8085/connectors/connector-name/restart
