@@ -50,7 +50,7 @@ curl -X POST http://localhost:8085/connectors/connector-name/pause
 curl -X POST http://localhost:8085/connectors/connector-name/restart
 ```
 
-## Check the Kafka Connect Logs to troubleshoot the error
+## Check the Kafka Connect Logs to troubleshoot the connector related issues
 ```
 docker logs kafkaconnect -f
 ```
