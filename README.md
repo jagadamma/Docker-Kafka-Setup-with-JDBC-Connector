@@ -1,12 +1,6 @@
 # Docker-Kafka-Setup-with-JDBC-Connector
 Docker Compose Stack for kafka installation and JDBC Connector Scripts for TimescaleDB.
 
-## SpinUp the Containers
-
-```
-docker-compose up -d
-```
-
 ## Create a new Kafka topic (Replace the topic name of your choice)
 ```
  docker exec -it kafka kafka-topics --create --topic topic_name --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
