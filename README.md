@@ -35,6 +35,7 @@ kafka-topics --bootstrap-server localhost:9092 --delete --topic topic_name
 ```
 
 ## Check the status of connector
+- Replace the localhost with kafka server IP if running from local machine
 ```
 curl -X GET http://localhost:8085/connectors/connector-name/status
 ```
