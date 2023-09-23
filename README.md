@@ -1,6 +1,17 @@
 # Docker-Kafka-Setup-with-JDBC-Connector
 Docker Compose Stack for kafka installation and JDBC Connector Scripts for TimescaleDB.
 
+## Deployment Steps.
+- Clone the Repository
+- in docker-compose.yml update the "Instance-IP-Here" field with your public or private instance ip
+```
+ KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092,PLAINTEXT_REMOTE_HOST://<Instance-IP-Here>:29093
+```
+- Save and start the stack by running following command
+```
+ docker-compose up -d
+```
+
 ## Create a new Kafka topic (Replace the topic name of your choice)
 ```
  docker exec -it kafka kafka-topics --create --topic topic_name --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
