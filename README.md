@@ -1,5 +1,6 @@
 # Docker-Kafka-Setup-with-JDBC-Connector
-Docker Compose Stack for kafka installation and JDBC Connector Scripts for TimescaleDB.
+- Docker Compose Stack for kafka installation and JDBC Connector Scripts for TimescaleDB.
+- The stack includes Kafka Components like Kafka, Zookeeper, Kafka Connector ect. It also includes the Kafka Exporter that exports the metrics to prometheus.
 
 ## Deployment Steps.
 - Clone the Repository
