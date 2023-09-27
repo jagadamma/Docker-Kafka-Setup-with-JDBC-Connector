@@ -21,9 +21,9 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
-      #volumes:
-      #- ./volumes-data/zookeeper/data:/var/lib/zookeeper/data
-      #- ./volumes-data/zookeeper/logs:/var/lib/zoopkeeper/log
+    volumes:
+      - /vol1/zk-data:/var/lib/zookeeper/data
+      - /vol2/zk-txn-logs:/var/lib/zookeeper/log
     restart: always
     networks:
       - datastreaming
@@ -38,14 +38,12 @@ services:
       - "9092:9092"
       - "29092:29092"
       - "29093:29093"
-      - "7071:7071"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,PLAINTEXT_REMOTE_HOST:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092,PLAINTEXT_REMOTE_HOST://<Instance-IP-Here>:29093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092,PLAINTEXT_REMOTE_HOST://10.0.4.192:29093
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      # KAFKA_OPTS: "-javaagent:/jmx_prometheus_javaagent-0.6.jar=7071:/kafka-0-8-2.yml"
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
@@ -55,11 +53,8 @@ services:
       test: ["CMD-SHELL", "kafka-topics --bootstrap-server 127.0.0.1:9092 --describe --topic iotdata"]
       interval: 20s
       retries: 5
-      #volumes:
-      #- ./jmx_prometheus_javaagent-0.6.jar:/jmx_prometheus_javaagent-0.6.jar
-      #- ./kafka-0-8-2.yml:/kafka-0-8-2.yml
-      #volumes:
-      #- ./volumes-data/kafka:/var/lib/kafka/data
+    volumes:
+      - /vol3/kafka-data:/var/lib/kafka/data
     restart: always
     networks:
       - datastreaming
