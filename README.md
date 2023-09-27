@@ -1,6 +1,7 @@
 # Docker-Kafka-Setup-with-JDBC-Connector
 - Docker Compose Stack for kafka installation and JDBC Connector Scripts for TimescaleDB.
 - The stack includes Kafka Components like Kafka, Zookeeper, Kafka Connector ect. It also includes the Kafka Exporter that exports the metrics to prometheus.
+- Also Contains the guide on how to setup the AKQH(GUI Based Kafka Manager)
 
 ## Deployment Steps.
 - Clone the Repository
@@ -66,6 +67,16 @@ curl -X DELETE http://localhost:8085/connectors/connector-name
 docker logs kafkaconnect -f
 ```
 
+## Setup AKHQ 
+### AKHQ is a GUI tool for Apache Kafka to manage topics, topics data, consumers group, schema registry, connect and more.
+
+- in the akqh-docker.yml, replace the localhost with public ip of your kafka server (kafka broker, schema registry and kafka connect), change ports also if using the different ports.
+- spin-up the AKHQ container by
+```
+docker-compose -f akhq-docker.yml up -d
+```
+- access the dashboard at publicip:8080
+  
 
 
 
