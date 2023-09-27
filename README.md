@@ -6,9 +6,25 @@
 ## Deployment Steps.
 - Clone the Repository
 - in docker-compose.yml update the "Instance-IP-Here" field with your public or private instance ip
+  
 ```
  KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092,PLAINTEXT_REMOTE_HOST://<Instance-IP-Here>:29093
 ```
+
+- Create volumes to persist the container data by running following commands
+
+```
+ # Create dirs for Kafka / ZK data.
+sudo mkdir -p /vol1/zk-data
+sudo mkdir -p /vol2/zk-txn-logs
+sudo mkdir -p /vol3/kafka-data
+
+# Make sure the user has the read and write permissions.
+sudo chown -R 1000:1000 /vol1/zk-data
+sudo chown -R 1000:1000 /vol2/zk-txn-logs
+sudo chown -R 1000:1000 /vol3/kafka-data
+```
+  
 - Save and start the stack by running following command
 ```
  docker-compose up -d
